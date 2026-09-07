@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/features/medicines/presentation/widgets/detail_row.dart';
+import 'package:pharmacy_management/core/shared/widgets/detail_row.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_entity.dart';
 
 class SummaryCard extends StatelessWidget {

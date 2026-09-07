@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
+import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_controller.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_param.dart';
 import 'package:pharmacy_management/features/sales/domain/usecase/create_sale.dart';
 
@@ -23,6 +24,7 @@ class SaleFormController extends GetxController {
 
   final cart = <CartLine>[].obs;
   final searchResults = <MedicineEntity>[].obs;
+  
   final isSearching = false.obs;
   final isSaving = false.obs;
   final errorMessage = RxnString();
@@ -33,21 +35,21 @@ class SaleFormController extends GetxController {
   double get estimatedTotal =>
       cart.fold(0, (sum, line) => sum + line.total);
 
-  Future<void> searchMedicines(String query) async {
-    if (query.trim().isEmpty) {
-      searchResults.clear();
-      return;
-    }
+              Future<void> searchMedicines(String query) async {
+                if (query.trim().isEmpty) {
+                  searchResults.clear();
+                  return;
+                }
 
-    isSearching.value = true;
-    final result = await getMedicines(query: query, page: 1);
-    isSearching.value = false;
+                isSearching.value = true;
+                final result = await getMedicines(query: query, page: 1);
+                isSearching.value = false;
 
-    result.fold(
-      (failure) => errorMessage.value = failure.message,
-      (page) => searchResults.value = page.items,
-    );
-  }
+                result.fold(
+                  (failure) => errorMessage.value = failure.message,
+                  (page) => searchResults.value = page.items,
+                );
+              }
 
   void addToCart(MedicineEntity medicine) {
     final existing = cart.indexWhere((l) => l.medicine.id == medicine.id);
@@ -67,32 +69,33 @@ class SaleFormController extends GetxController {
 
   void removeLine(int index) => cart.removeAt(index);
 
-  Future<void> submit() async {
-    if (!canSubmit) return;
+                Future<void> submit() async {
+                  if (!canSubmit) return;
 
-    isSaving.value = true;
-    errorMessage.value = null;
+                  isSaving.value = true;
+                  errorMessage.value = null;
 
-    final result = await createSale(
-      CreateSaleParam(
-        items: cart
-            .map((l) => SaleParam(
-                  medicineId: l.medicine.id,
-                  quantity: l.quantity,
-                ))
-            .toList(),
-      ),
-    );
+                  final result = await createSale(
+                    CreateSaleParam(
+                      items: cart
+                          .map((l) => SaleParam(
+                                medicineId: l.medicine.id,
+                                quantity: l.quantity,
+                              ))
+                          .toList(),
+                    ),
+                  );
 
-    isSaving.value = false;
+                  isSaving.value = false;
 
-    result.fold(
-      // 422 here means insufficient stock or expired medicine.
-      (failure) => errorMessage.value = failure.message,
-      (sale) {
-        Get.back(result: true);
-        Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
-      },
-    );
-  }
+                  result.fold(
+                    // 422 here means insufficient stock or expired medicine.
+                    (failure) => errorMessage.value = failure.message,
+                    (sale) {
+                      Get.back(result: true);
+                      Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
+                      Get.find<MedicinesController>().refreshList();
+                    },
+                  );
+                }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
 import 'package:pharmacy_management/core/theme/app_fonts.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_entity.dart';
-import 'package:pharmacy_management/features/sales/presentation/widgets/item_row.dart';
+import 'package:pharmacy_management/features/sales/presentation/widgets/detail/item_row.dart';
 
 class ItemsCard extends StatelessWidget {
   final SaleEntity sale;

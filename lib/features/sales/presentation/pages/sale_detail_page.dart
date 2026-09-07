@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
 import 'package:pharmacy_management/features/sales/presentation/controllers/sales_detail_controller.dart';
-import 'package:pharmacy_management/features/sales/presentation/widgets/invoice_header.dart';
-import 'package:pharmacy_management/features/sales/presentation/widgets/items_cart.dart';
-import 'package:pharmacy_management/features/sales/presentation/widgets/summary_card.dart';
+import 'package:pharmacy_management/features/sales/presentation/widgets/detail/invoice_header.dart';
+import 'package:pharmacy_management/features/sales/presentation/widgets/detail/items_cart.dart';
+import 'package:pharmacy_management/features/sales/presentation/widgets/detail/summary_card.dart';
 
 
 class SaleDetailPage extends GetView<SaleDetailController> {
