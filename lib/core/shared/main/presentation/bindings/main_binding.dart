@@ -1,0 +1,41 @@
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:pharmacy_management/core/services/session_service.dart';
+import 'package:pharmacy_management/core/shared/main/presentation/controllers/main_controller.dart';
+import 'package:pharmacy_management/features/auth/data/data_source/auth_local_data_source.dart';
+import 'package:pharmacy_management/features/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:pharmacy_management/features/auth/data/repository/auth_repository_impl.dart';
+import 'package:pharmacy_management/features/auth/domain/repository/auth_repository.dart';
+import 'package:pharmacy_management/features/auth/domain/usecase/logout.dart';
+
+class MainBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(Get.find<Dio>()),
+      fenix: true,
+    );
+    Get.lazyPut<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(),
+      fenix: true,
+    );
+    Get.lazyPut<AuthRepository>(
+      () => AuthRepositoryImpl(
+        remote: Get.find<AuthRemoteDataSource>(),
+        local: Get.find<AuthLocalDataSource>(),
+      ),
+      fenix: true,
+    );
+    Get.lazyPut<LogoutUseCase>(
+      () => LogoutUseCase(Get.find<AuthRepository>()),
+      fenix: true,
+    );
+
+    Get.put<MainController>(
+      MainController(
+        logoutUseCase: Get.find<LogoutUseCase>(),
+        session: Get.find<SessionService>(),
+      ),
+    );
+  }
+}
