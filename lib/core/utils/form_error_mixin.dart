@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/core.dart';import 'package:pharmacy_management/core/utils/validators.dart';
+import 'package:pharmacy_management/core/core.dart';
 
 mixin FormErrorsMixin on GetxController {
   final formKey = GlobalKey<FormState>();
