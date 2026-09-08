@@ -38,22 +38,22 @@ class MainPage extends GetView<MainController> {
             BottomNavigationBarItem(
               icon: Icon(Icons.dashboard_outlined),
               activeIcon: Icon(Icons.dashboard),
-              label: AppConstants.dashboardLable,
+              label: AppConstants.dashboardLabel,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.medication_outlined),
               activeIcon: Icon(Icons.medication),
-              label: AppConstants.medicinesLable,
+              label: AppConstants.medicinesLabel,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.receipt_long_outlined),
               activeIcon: Icon(Icons.receipt_long),
-              label: AppConstants.salesLable,
+              label: AppConstants.salesLabel,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.inventory_2_outlined),
               activeIcon: Icon(Icons.inventory_2),
-              label: AppConstants.inventoryLable,
+              label: AppConstants.inventoryLabel,
             ),
           ],
         ),

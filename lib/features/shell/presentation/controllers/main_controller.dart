@@ -18,10 +18,10 @@ class MainController extends GetxController {
   UserEntity? get user => session.user.value;
 
   String get title => switch (currentTab) {
-        MainTab.dashboard => AppConstants.dashboardLable,
-        MainTab.medicines => AppConstants.medicinesLable,
-        MainTab.sales => AppConstants.salesLable,
-        MainTab.inventory => AppConstants.inventoryLable,
+        MainTab.dashboard => AppConstants.dashboardLabel,
+        MainTab.medicines => AppConstants.medicinesLabel,
+        MainTab.sales => AppConstants.quantityLabel,
+        MainTab.inventory => AppConstants.inventoryLabel,
       };
 
   /// First letter of the user's name, for the avatar.
