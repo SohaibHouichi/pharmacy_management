@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_management/core/shared/config/status_style.dart';
+import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
+import 'package:pharmacy_management/core/shared/widgets/status_badge.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
 import 'package:pharmacy_management/core/theme/app_fonts.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
@@ -44,39 +47,18 @@ class LowStockTile extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 2),
-                  Row(
-                    children: [
-                      Text(
-                        medicine.category?.name ?? '—',
-                        style: AppFonts.caption,
-                      ),
-                      if (expiringSoon) ...[
-                        const SizedBox(width: 6),
-                        Text(
-                          medicine.isExpired
-                              ? '/ Expired'
-                              : '/ Expiring soon', // only two statuses to show 
-                          style: AppFonts.caption.copyWith(
-                            color: medicine.isExpired
-                                ? AppColors.error
-                                : AppColors.warning,
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
                 ],
               ),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  '${medicine.quantity}',
-                  style: AppFonts.titleMedium.copyWith(color: AppColors.error),
-                ),
-                Text('/${medicine.minStockLevel}', style: AppFonts.caption),
+                medicine.quantity == 0 ?
+                StatusBadge(style: StatusConfig.outOfStock)
+                :Text( 
+                  'Still only ${medicine.quantity}',
+                  style: AppFonts.caption.copyWith(color: AppColors.error),
+                )
               ],
             ),
           ],

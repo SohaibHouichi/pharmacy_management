@@ -6,6 +6,8 @@ import 'package:pharmacy_management/core/shared/main/presentation/pages/main_pag
 import 'package:pharmacy_management/features/auth/presentation/bindings/auth_binding.dart';
 import 'package:pharmacy_management/features/auth/presentation/pages/auth_page.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/bindings/dashboard_binding.dart';
+import 'package:pharmacy_management/features/inventory/presentation/bindings/inventory_form_binding.dart';
+import 'package:pharmacy_management/features/inventory/presentation/pages/inventory_form_page.dart';
 import 'package:pharmacy_management/features/medicines/presentation/bindings/medicine_detail_binding.dart';
 import 'package:pharmacy_management/features/medicines/presentation/bindings/medicine_form_binding.dart';
 import 'package:pharmacy_management/features/medicines/presentation/bindings/medicines_binding.dart';
@@ -35,7 +37,12 @@ abstract class AppGetRoute {
       GetPage(
         name: AppRoute.main,
         page: () => const MainPage(),
-        bindings: [MainBinding(), DashboardBinding(), MedicinesBinding(), SalesBinding()],
+        bindings: [
+          MainBinding(),
+          DashboardBinding(),
+          MedicinesBinding(),
+          SalesBinding(),
+        ],
         middlewares: [AuthMiddleware()],
       ),
       GetPage(
@@ -60,6 +67,12 @@ abstract class AppGetRoute {
         name: AppRoute.saleDetail,
         page: () => const SaleDetailPage(),
         binding: SaleDetailBinding(),
+        middlewares: [AuthMiddleware()],
+      ),
+      GetPage(
+        name: AppRoute.inventoryForm,
+        page: () => const InventoryFormPage(),
+        binding: InventoryFormBinding(),
         middlewares: [AuthMiddleware()],
       ),
     ];

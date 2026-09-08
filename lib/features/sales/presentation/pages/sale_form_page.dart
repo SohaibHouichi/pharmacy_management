@@ -17,7 +17,7 @@ class SaleFormPage extends GetView<SaleFormController> {
       body: SafeArea(
         child: Column(
           children: [
-            const _SearchSection(),
+            _SearchSection(),
             Expanded(child: Obx(() => _buildCart())),
             Obx(() => _buildFooter()),
           ],
@@ -89,13 +89,6 @@ class SaleFormPage extends GetView<SaleFormController> {
             ],
           ),
           const SizedBox(height: 4),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'The server calculates the final total.',
-              style: AppFonts.caption,
-            ),
-          ),
           const SizedBox(height: 14),
           AppButton(
             label: 'Complete sale (cash)',
@@ -108,22 +101,9 @@ class SaleFormPage extends GetView<SaleFormController> {
   }
 }
 
-class _SearchSection extends StatefulWidget {
-  const _SearchSection();
-
-  @override
-  State<_SearchSection> createState() => _SearchSectionState();
-}
-
-class _SearchSectionState extends State<_SearchSection> {
-  final _textController = TextEditingController();
+class _SearchSection extends StatelessWidget {
+  _SearchSection();
   final _controller = Get.find<SaleFormController>();
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +112,7 @@ class _SearchSectionState extends State<_SearchSection> {
       child: Column(
         children: [
           TextField(
-            controller: _textController,
+            controller: _controller.searchController,
             onChanged: _controller.searchMedicines,
             style: AppFonts.bodyLarge,
             decoration: InputDecoration(
@@ -182,7 +162,7 @@ class _SearchSectionState extends State<_SearchSection> {
                       outOfStock
                           ? 'Out of stock'
                           : 'Stock ${medicine.quantity} · '
-                              '${medicine.price.toStringAsFixed(2)}',
+                                '${medicine.price.toStringAsFixed(2)}',
                       style: AppFonts.caption.copyWith(
                         color: outOfStock ? AppColors.error : null,
                       ),
@@ -190,10 +170,7 @@ class _SearchSectionState extends State<_SearchSection> {
                     trailing: const Icon(Icons.add, size: 18),
                     onTap: outOfStock
                         ? null
-                        : () {
-                            _controller.addToCart(medicine);
-                            _textController.clear();
-                          },
+                        : () => _controller.addToCart(medicine),
                   );
                 },
               ),

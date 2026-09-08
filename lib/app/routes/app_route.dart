@@ -19,4 +19,5 @@ class AppRoute {
 
 
   static const String  inventory ='/inventory';
+  static const String  inventoryForm ='/inventory-form';
 }

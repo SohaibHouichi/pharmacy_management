@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
@@ -24,7 +25,8 @@ class SaleFormController extends GetxController {
 
   final cart = <CartLine>[].obs;
   final searchResults = <MedicineEntity>[].obs;
-  
+  final searchController = TextEditingController();
+
   final isSearching = false.obs;
   final isSaving = false.obs;
   final errorMessage = RxnString();
@@ -32,24 +34,23 @@ class SaleFormController extends GetxController {
   bool get canSubmit => cart.isNotEmpty && !cart.any((l) => l.exceedsStock);
 
   /// Client-side preview only — the server's total is authoritative.
-  double get estimatedTotal =>
-      cart.fold(0, (sum, line) => sum + line.total);
+  double get estimatedTotal => cart.fold(0, (sum, line) => sum + line.total);
 
-              Future<void> searchMedicines(String query) async {
-                if (query.trim().isEmpty) {
-                  searchResults.clear();
-                  return;
-                }
+  Future<void> searchMedicines(String query) async {
+    if (query.trim().isEmpty) {
+      searchResults.clear();
+      return;
+    }
 
-                isSearching.value = true;
-                final result = await getMedicines(query: query, page: 1);
-                isSearching.value = false;
+    isSearching.value = true;
+    final result = await getMedicines(query: query, page: 1);
+    isSearching.value = false;
 
-                result.fold(
-                  (failure) => errorMessage.value = failure.message,
-                  (page) => searchResults.value = page.items,
-                );
-              }
+    result.fold(
+      (failure) => errorMessage.value = failure.message,
+      (page) => searchResults.value = page.items,
+    );
+  }
 
   void addToCart(MedicineEntity medicine) {
     final existing = cart.indexWhere((l) => l.medicine.id == medicine.id);
@@ -58,7 +59,7 @@ class SaleFormController extends GetxController {
       return;
     }
     cart.add(CartLine(medicine: medicine));
-    searchResults.clear();
+    clearSearch();
   }
 
   void changeQuantity(int index, int quantity) {
@@ -69,33 +70,43 @@ class SaleFormController extends GetxController {
 
   void removeLine(int index) => cart.removeAt(index);
 
-                Future<void> submit() async {
-                  if (!canSubmit) return;
+  Future<void> submit() async {
+    if (!canSubmit) return;
 
-                  isSaving.value = true;
-                  errorMessage.value = null;
+    isSaving.value = true;
+    errorMessage.value = null;
 
-                  final result = await createSale(
-                    CreateSaleParam(
-                      items: cart
-                          .map((l) => SaleParam(
-                                medicineId: l.medicine.id,
-                                quantity: l.quantity,
-                              ))
-                          .toList(),
-                    ),
-                  );
+    final result = await createSale(
+      CreateSaleParam(
+        items: cart
+            .map(
+              (l) => SaleParam(medicineId: l.medicine.id, quantity: l.quantity),
+            )
+            .toList(),
+      ),
+    );
 
-                  isSaving.value = false;
+    isSaving.value = false;
 
-                  result.fold(
-                    // 422 here means insufficient stock or expired medicine.
-                    (failure) => errorMessage.value = failure.message,
-                    (sale) {
-                      Get.back(result: true);
-                      Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
-                      Get.find<MedicinesController>().refreshList();
-                    },
-                  );
-                }
+    result.fold(
+      // 422 here means insufficient stock or expired medicine.
+      (failure) => errorMessage.value = failure.message,
+      (sale) {
+        Get.back(result: true);
+        Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
+        Get.find<MedicinesController>().refreshList();
+      },
+    );
+  }
+
+  @override
+  void onClose() {
+    searchController.dispose();
+    super.onClose();
+  }
+
+  void clearSearch() {
+    searchController.clear();
+    searchResults.clear();
+  }
 }
