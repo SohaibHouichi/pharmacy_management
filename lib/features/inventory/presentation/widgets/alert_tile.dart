@@ -55,7 +55,7 @@ class AlertTile extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
@@ -66,8 +66,10 @@ class AlertTile extends StatelessWidget {
                           : AppColors.textPrimary,
                     ),
                   ),
-                  Text('min ${medicine.minStockLevel}',
-                      style: AppFonts.caption),
+                  Text(
+                    '/${medicine.minStockLevel}',
+                    style: AppFonts.caption,
+                  ),
                 ],
               ),
             ],
@@ -89,16 +91,18 @@ class AlertTile extends StatelessWidget {
             StatusBadgeRow(styles: medicine.badges),
           ],
           const SizedBox(height: 10),
-          const Divider(height: 1),
-          const SizedBox(height: 4),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton.icon(
-              onPressed: onUpdateStock,
-              icon: const Icon(Icons.edit_outlined, size: 16),
-              label: const Text('Update stock'),
+          if (medicine.isLowStock) ...[
+            const Divider(height: 1),
+            const SizedBox(height: 4),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
+                onPressed: onUpdateStock,
+                icon: const Icon(Icons.edit_outlined, size: 16),
+                label: const Text('Update stock'),
+              ),
             ),
-          ),
+          ],
         ],
       ),
     );

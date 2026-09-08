@@ -3,7 +3,7 @@ import 'package:pharmacy_management/core/domain/paginated.dart';
 import 'package:pharmacy_management/core/error/failures.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/category_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
-import 'package:pharmacy_management/features/medicines/domain/entity/medicines_param.dart';
+import 'package:pharmacy_management/features/medicines/domain/entity/medicines_params.dart';
 
 abstract class MedicinesRepository {
   Future<Either<Failure, Paginated<MedicineEntity>>> getMedicines({

@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/middleware/auth_middleware.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/shared/main/presentation/bindings/main_binding.dart';
-import 'package:pharmacy_management/core/shared/main/presentation/pages/main_page.dart';
+import 'package:pharmacy_management/features/shell/presentation/bindings/main_binding.dart';
+import 'package:pharmacy_management/features/shell/presentation/pages/main_page.dart';
 import 'package:pharmacy_management/features/auth/presentation/bindings/auth_binding.dart';
-import 'package:pharmacy_management/features/auth/presentation/pages/auth_page.dart';
+import 'package:pharmacy_management/features/auth/presentation/pages/login_page.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/bindings/dashboard_binding.dart';
+import 'package:pharmacy_management/features/inventory/presentation/bindings/inventory_binding.dart';
 import 'package:pharmacy_management/features/inventory/presentation/bindings/inventory_form_binding.dart';
 import 'package:pharmacy_management/features/inventory/presentation/pages/inventory_form_page.dart';
 import 'package:pharmacy_management/features/medicines/presentation/bindings/medicine_detail_binding.dart';
@@ -14,8 +15,8 @@ import 'package:pharmacy_management/features/medicines/presentation/bindings/med
 import 'package:pharmacy_management/features/medicines/presentation/pages/medicine_detail_page.dart';
 import 'package:pharmacy_management/features/medicines/presentation/pages/medicine_form_page.dart';
 import 'package:pharmacy_management/features/sales/presentation/bindings/sales_binding.dart';
-import 'package:pharmacy_management/features/sales/presentation/bindings/sales_detail_binding.dart';
-import 'package:pharmacy_management/features/sales/presentation/bindings/sales_form_binding.dart';
+import 'package:pharmacy_management/features/sales/presentation/bindings/sale_detail_binding.dart';
+import 'package:pharmacy_management/features/sales/presentation/bindings/sale_form_binding.dart';
 import 'package:pharmacy_management/features/sales/presentation/pages/sale_detail_page.dart';
 import 'package:pharmacy_management/features/sales/presentation/pages/sale_form_page.dart';
 import 'package:pharmacy_management/features/splash/presentation/bindings/splash_binding.dart';
@@ -42,6 +43,7 @@ abstract class AppGetRoute {
           DashboardBinding(),
           MedicinesBinding(),
           SalesBinding(),
+          InventoryBinding()
         ],
         middlewares: [AuthMiddleware()],
       ),

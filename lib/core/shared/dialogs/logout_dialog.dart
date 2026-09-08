@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/shared/main/presentation/controllers/main_controller.dart';
+import 'package:pharmacy_management/features/shell/presentation/controllers/main_controller.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
 
 class LogoutDialog extends GetxController {

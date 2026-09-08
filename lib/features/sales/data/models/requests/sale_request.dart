@@ -1,4 +1,4 @@
-import 'package:pharmacy_management/features/sales/domain/entity/sale_param.dart';
+import 'package:pharmacy_management/features/sales/domain/entity/sale_params.dart';
 
 class SaleRequest {
   final int medicineId;

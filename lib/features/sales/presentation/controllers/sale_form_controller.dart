@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
 import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_controller.dart';
-import 'package:pharmacy_management/features/sales/domain/entity/sale_param.dart';
+import 'package:pharmacy_management/features/sales/domain/entity/sale_params.dart';
 import 'package:pharmacy_management/features/sales/domain/usecase/create_sale.dart';
 
 /// A medicine plus the quantity being sold.

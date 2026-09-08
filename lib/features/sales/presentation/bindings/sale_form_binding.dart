@@ -3,7 +3,7 @@ import 'package:pharmacy_management/features/medicines/domain/repository/medicin
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
 import 'package:pharmacy_management/features/sales/domain/repository/sales_repository.dart';
 import 'package:pharmacy_management/features/sales/domain/usecase/create_sale.dart';
-import 'package:pharmacy_management/features/sales/presentation/controllers/sales_form_controller.dart';
+import 'package:pharmacy_management/features/sales/presentation/controllers/sale_form_controller.dart';
 
 class SaleFormBinding extends Bindings {
   @override

@@ -3,9 +3,9 @@ import 'package:pharmacy_management/core/error/failures.dart';
 import 'package:pharmacy_management/core/error/guard.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_remote_data_source.dart';
-import 'package:pharmacy_management/features/auth/data/model/requests/auth_request.dart';
-import 'package:pharmacy_management/features/auth/data/model/responses/auth_me_response.dart';
-import 'package:pharmacy_management/features/auth/data/model/responses/auth_response.dart';
+import 'package:pharmacy_management/features/auth/data/models/requests/auth_request.dart';
+import 'package:pharmacy_management/features/auth/data/models/responses/auth_me_response.dart';
+import 'package:pharmacy_management/features/auth/data/models/responses/auth_response.dart';
 import 'package:pharmacy_management/features/auth/domain/entity/auth_entity.dart';
 import 'package:pharmacy_management/features/auth/domain/repository/auth_repository.dart';
 

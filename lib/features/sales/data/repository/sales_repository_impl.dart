@@ -6,7 +6,7 @@ import 'package:pharmacy_management/features/sales/data/data_source/sales_remote
 import 'package:pharmacy_management/features/sales/data/models/mappers/sales_mapper.dart';
 import 'package:pharmacy_management/features/sales/data/models/requests/sale_request.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_entity.dart';
-import 'package:pharmacy_management/features/sales/domain/entity/sale_param.dart';
+import 'package:pharmacy_management/features/sales/domain/entity/sale_params.dart';
 import 'package:pharmacy_management/features/sales/domain/repository/sales_repository.dart';
 
 class SalesRepositoryImpl implements SalesRepository {

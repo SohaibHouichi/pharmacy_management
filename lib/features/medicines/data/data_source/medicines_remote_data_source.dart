@@ -6,7 +6,7 @@ import 'package:pharmacy_management/core/network/api_response.dart';
 import 'package:pharmacy_management/core/network/dio_exception_handler.dart';
 import 'package:pharmacy_management/core/utils/json_utils.dart';
 import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_creation_request.dart';
-import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_udating_request.dart';
+import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_updating_request.dart';
 import 'package:pharmacy_management/features/medicines/data/models/responses/category_response.dart';
 import 'package:pharmacy_management/features/medicines/data/models/responses/medicines_response.dart';
 

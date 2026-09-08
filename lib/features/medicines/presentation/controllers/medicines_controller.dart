@@ -4,6 +4,7 @@ import 'package:pharmacy_management/core/constant/app_constants.dart';
 import 'package:pharmacy_management/core/domain/paginated.dart';
 import 'package:pharmacy_management/core/shared/dialogs/confirm_dialog.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/controllers/dashboard_controller.dart';
+import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/delete_medicine.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
@@ -96,6 +97,7 @@ class MedicinesController extends GetxController {
   Future<void> refreshList() async {
     await loadFirstPage();
     await _refreshDashboard();
+    await _refreshInventory();
   }
 
   /// The dashboard's totals depend on medicines, so resync it after changes.
@@ -104,7 +106,11 @@ class MedicinesController extends GetxController {
       await Get.find<DashboardController>().loadDashboard();
     }
   }
-
+Future<void> _refreshInventory() async {
+    if (Get.isRegistered<InventoryController>()) {
+      await Get.find<InventoryController>().load();
+    }
+  }
   void onSearchChanged(String value) => searchQuery.value = value;
 
   void clearSearch() => searchQuery.value = '';

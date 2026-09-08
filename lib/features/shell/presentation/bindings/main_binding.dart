@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/core/services/session_service.dart';
-import 'package:pharmacy_management/core/shared/main/presentation/controllers/main_controller.dart';
+import 'package:pharmacy_management/features/shell/presentation/controllers/main_controller.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:pharmacy_management/features/auth/data/repository/auth_repository_impl.dart';

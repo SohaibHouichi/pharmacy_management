@@ -1,5 +1,5 @@
 import 'package:pharmacy_management/core/utils/json_utils.dart';
-import 'package:pharmacy_management/features/medicines/domain/entity/medicines_param.dart';
+import 'package:pharmacy_management/features/medicines/domain/entity/medicines_params.dart';
 
 class MedicinesUpdateRequest {
   final String name;

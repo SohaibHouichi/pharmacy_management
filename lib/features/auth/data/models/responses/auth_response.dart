@@ -1,4 +1,4 @@
-import 'package:pharmacy_management/features/auth/data/model/responses/auth_me_response.dart';
+import 'package:pharmacy_management/features/auth/data/models/responses/auth_me_response.dart';
 import 'package:pharmacy_management/features/auth/domain/entity/auth_entity.dart';
 
 class AuthResponse {

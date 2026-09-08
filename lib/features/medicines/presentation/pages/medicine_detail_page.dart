@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
 import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_detail_controller.dart';
+import 'package:pharmacy_management/features/medicines/presentation/controllers/medicine_detail_controller.dart';
 import 'package:pharmacy_management/features/medicines/presentation/widgets/detail/header_card.dart';
 import 'package:pharmacy_management/features/medicines/presentation/widgets/detail/info_card.dart';
 

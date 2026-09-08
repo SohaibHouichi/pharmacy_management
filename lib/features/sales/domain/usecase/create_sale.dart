@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:pharmacy_management/core/error/failures.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_entity.dart';
-import 'package:pharmacy_management/features/sales/domain/entity/sale_param.dart';
+import 'package:pharmacy_management/features/sales/domain/entity/sale_params.dart';
 import 'package:pharmacy_management/features/sales/domain/repository/sales_repository.dart';
 
 class CreateSale {

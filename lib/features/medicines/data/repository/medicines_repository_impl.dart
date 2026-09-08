@@ -3,13 +3,13 @@ import 'package:pharmacy_management/core/domain/paginated.dart';
 import 'package:pharmacy_management/core/error/failures.dart';
 import 'package:pharmacy_management/core/error/guard.dart';
 import 'package:pharmacy_management/features/medicines/data/data_source/medicines_remote_data_source.dart';
-import 'package:pharmacy_management/features/medicines/data/models/mapper/medicines_mapper.dart';
-import 'package:pharmacy_management/features/medicines/data/models/mapper/medicines_paginated_mapper.dart';
+import 'package:pharmacy_management/features/medicines/data/models/mappers/medicines_mapper.dart';
+import 'package:pharmacy_management/features/medicines/data/models/mappers/medicines_paginated_mapper.dart';
 import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_creation_request.dart';
-import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_udating_request.dart';
+import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_updating_request.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/category_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
-import 'package:pharmacy_management/features/medicines/domain/entity/medicines_param.dart';
+import 'package:pharmacy_management/features/medicines/domain/entity/medicines_params.dart';
 import 'package:pharmacy_management/features/medicines/domain/repository/medicines_repository.dart';
 
 class MedicinesRepositoryImpl implements MedicinesRepository {
