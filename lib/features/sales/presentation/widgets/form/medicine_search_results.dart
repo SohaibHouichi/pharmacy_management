@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/presentation/controllers/sale_form_controller.dart';
 
 class MedicineSearchResults extends GetView<SaleFormController> {
@@ -23,7 +22,7 @@ class MedicineSearchResults extends GetView<SaleFormController> {
         child: ListView.separated(
           shrinkWrap: true,
           itemCount: controller.searchResults.length,
-          separatorBuilder: (_, __) => const Divider(height: 1),
+          separatorBuilder: (_, _) => const Divider(height: 1),
           itemBuilder: (_, i) {
             final medicine = controller.searchResults[i];
             final outOfStock = medicine.quantity == 0;

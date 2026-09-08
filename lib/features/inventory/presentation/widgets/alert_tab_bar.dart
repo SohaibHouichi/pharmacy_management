@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/shared/config/status_style.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
 
 class AlertTabBar extends GetView<InventoryController> {

@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:pharmacy_management/core/domain/paginated.dart';
-import 'package:pharmacy_management/core/error/failures.dart';
-import 'package:pharmacy_management/core/error/guard.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/data/data_source/sales_remote_data_source.dart';
 import 'package:pharmacy_management/features/sales/data/models/mappers/sales_mapper.dart';
 import 'package:pharmacy_management/features/sales/data/models/requests/sale_request.dart';

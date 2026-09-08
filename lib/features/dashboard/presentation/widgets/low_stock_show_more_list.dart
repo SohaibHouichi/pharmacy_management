@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/widgets/low_stock_tile.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 

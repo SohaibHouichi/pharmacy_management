@@ -1,5 +1,4 @@
-
-import 'package:pharmacy_management/core/domain/expiry_status.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/data/models/responses/category_response.dart';
 
 class MedicinesResponse {

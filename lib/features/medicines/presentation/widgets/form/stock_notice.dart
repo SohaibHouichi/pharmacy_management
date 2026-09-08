@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/core.dart';
 
 class StockNotice extends StatelessWidget {
   const StockNotice({super.key});

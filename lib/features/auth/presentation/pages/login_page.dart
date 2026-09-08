@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/auth/presentation/controllers/auth_controller.dart';
 import 'package:pharmacy_management/features/auth/presentation/widgets/header.dart';
 import 'package:pharmacy_management/features/auth/presentation/widgets/login_card.dart';

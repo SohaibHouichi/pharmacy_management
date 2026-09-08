@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/core.dart';
 
 class Greeting extends StatelessWidget {
   final String? name;
-  const Greeting({this.name});
+  const Greeting({super.key, this.name});
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/domain/entity/dashboard_entity.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/widgets/stat_card.dart';
 
 class StatsGrid extends StatelessWidget {
   final DashboardEntity data;
-  const StatsGrid({required this.data});
+  const StatsGrid({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {

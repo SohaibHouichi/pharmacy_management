@@ -69,7 +69,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
         // Keeps pull-to-refresh working when the list is short.
         physics: const AlwaysScrollableScrollPhysics(),
         itemCount: itemCount,
-        separatorBuilder: (_, __) => SizedBox(height: widget.spacing),
+        separatorBuilder: (_, _) => SizedBox(height: widget.spacing),
         itemBuilder: (context, index) {
           if (index >= widget.items.length) return const _LoadingFooter();
           return widget.itemBuilder(context, widget.items[index], index);

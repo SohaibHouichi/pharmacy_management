@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
 import 'package:pharmacy_management/features/inventory/presentation/widgets/alert_tab_bar.dart';
 import 'package:pharmacy_management/features/inventory/presentation/widgets/alert_tile.dart';
@@ -57,7 +56,7 @@ class InventoryPage extends GetView<InventoryController> {
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         physics: const AlwaysScrollableScrollPhysics(),
         itemCount: medicines.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 12),
+        separatorBuilder: (_, _) => const SizedBox(height: 12),
         itemBuilder: (_, i) {
           final medicine = medicines[i];
           return AlertTile(

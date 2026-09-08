@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/controllers/dashboard_controller.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/widgets/greeting.dart';
 import 'package:pharmacy_management/features/dashboard/presentation/widgets/low_stock_section.dart';

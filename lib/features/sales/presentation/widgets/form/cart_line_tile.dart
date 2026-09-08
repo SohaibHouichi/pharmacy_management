@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/presentation/controllers/sale_form_controller.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/form/qty_button.dart';
 

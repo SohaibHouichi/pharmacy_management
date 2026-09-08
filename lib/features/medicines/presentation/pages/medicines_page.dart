@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
-import 'package:pharmacy_management/core/shared/widgets/paginated_list_view.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_controller.dart';
 import 'package:pharmacy_management/features/medicines/presentation/widgets/medicine_search_field.dart';
@@ -49,7 +47,7 @@ class MedicinesPage extends GetView<MedicinesController> {
       onRefresh: controller.refreshList,
       onLoadMore: controller.loadNextPage,
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-      itemBuilder: (_, medicine, __) => MedicineTile(
+      itemBuilder: (_, medicine, _) => MedicineTile(
         medicine: medicine,
         onTap: () => controller.openDetails(medicine.id),
         onEdit: () => controller.openEditForm(medicine),
@@ -73,7 +71,6 @@ class _Header extends StatelessWidget {
         children: [
           MedicineSearchField(
             key: const ValueKey('medicine-search'),
-            controller: controller,
           ),
           const SizedBox(height: 8),
           Obx(

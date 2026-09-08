@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
 import 'package:pharmacy_management/features/sales/presentation/controllers/sale_detail_controller.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/detail/invoice_header.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/detail/items_card.dart';

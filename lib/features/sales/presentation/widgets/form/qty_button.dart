@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
 
 class QtyButton extends StatelessWidget {
   final IconData icon;

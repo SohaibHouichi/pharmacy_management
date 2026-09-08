@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
+import 'package:pharmacy_management/core/core.dart';
 import '../../data/data_source/auth_remote_data_source.dart';
 import '../../data/data_source/auth_local_data_source.dart';
 import '../../data/repository/auth_repository_impl.dart';

@@ -1,10 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pharmacy_management/core/domain/paginated.dart';
-import 'package:pharmacy_management/core/error/exceptions.dart';
-import 'package:pharmacy_management/core/network/api_endpoints.dart';
-import 'package:pharmacy_management/core/network/api_response.dart';
-import 'package:pharmacy_management/core/network/dio_exception_handler.dart';
-import 'package:pharmacy_management/core/utils/json_utils.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/data/models/requests/sale_request.dart';
 import 'package:pharmacy_management/features/sales/data/models/responses/sale_response.dart';
 

@@ -1,9 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pharmacy_management/core/error/exceptions.dart';
-import 'package:pharmacy_management/core/network/api_endpoints.dart';
-import 'package:pharmacy_management/core/network/api_response.dart';
-import 'package:pharmacy_management/core/network/dio_exception_handler.dart';
-import 'package:pharmacy_management/core/utils/json_utils.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/data/models/requests/inventory_request.dart';
 import 'package:pharmacy_management/features/inventory/data/models/responses/inventory_alerts_response.dart';
 import 'package:pharmacy_management/features/inventory/data/models/responses/inventory_updated_response.dart';

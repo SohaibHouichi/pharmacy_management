@@ -1,10 +1,10 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/domain/paginated.dart';
-import 'package:pharmacy_management/core/shared/dialogs/confirm_dialog.dart';
-import 'package:pharmacy_management/features/dashboard/presentation/controllers/dashboard_controller.dart';
-import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
+import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/features/dashboard/dashboard.dart';
+import 'package:pharmacy_management/features/inventory/inventory.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/delete_medicine.dart';
 import 'package:pharmacy_management/features/medicines/domain/usecase/get_medicines.dart';
@@ -25,6 +25,7 @@ class MedicinesController extends GetxController {
   final searchQuery = ''.obs;
   final total = 0.obs;
   final deletingId = RxnInt();
+  final searchController = TextEditingController();
 
   final _currentPage = 1.obs;
   final _lastPage = 1.obs;
@@ -51,6 +52,7 @@ class MedicinesController extends GetxController {
   @override
   void onClose() {
     _searchWorker?.dispose();
+    searchController.dispose();
     super.onClose();
   }
 
@@ -106,14 +108,19 @@ class MedicinesController extends GetxController {
       await Get.find<DashboardController>().loadDashboard();
     }
   }
-Future<void> _refreshInventory() async {
+
+  Future<void> _refreshInventory() async {
     if (Get.isRegistered<InventoryController>()) {
       await Get.find<InventoryController>().load();
     }
   }
+
   void onSearchChanged(String value) => searchQuery.value = value;
 
-  void clearSearch() => searchQuery.value = '';
+ void clearSearch() {
+  searchController.clear();
+  searchQuery.value = '';
+}
 
   Future<void> openDetails(int id) async {
     await Get.toNamed(AppRoute.medicinesDetails, arguments: id);

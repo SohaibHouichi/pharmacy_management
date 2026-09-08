@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/features/shell/presentation/controllers/main_controller.dart';
-import 'package:pharmacy_management/core/shared/widgets/lazy_indexed_stack.dart';
-import 'package:pharmacy_management/features/shell/presentation/widgets/user_menu_button.dart';
-import 'package:pharmacy_management/features/dashboard/presentation/bindings/pages/dashboard_page.dart';
-import 'package:pharmacy_management/features/inventory/presentation/pages/inventory_page.dart';
-import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_controller.dart';
-import 'package:pharmacy_management/features/medicines/presentation/pages/medicines_page.dart';
-import 'package:pharmacy_management/features/sales/presentation/controllers/sales_controller.dart';
-import 'package:pharmacy_management/features/sales/presentation/pages/sales_page.dart';
+import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/features/shell/shell.dart';
+import 'package:pharmacy_management/features/dashboard/dashboard.dart';
+import 'package:pharmacy_management/features/inventory/inventory.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
+import 'package:pharmacy_management/features/sales/sales.dart';
 
 class MainPage extends GetView<MainController> {
   const MainPage({super.key});

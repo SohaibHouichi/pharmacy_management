@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
-import 'package:pharmacy_management/features/auth/domain/entity/auth_entity.dart';
-import 'package:pharmacy_management/features/auth/domain/usecase/logout.dart';
+import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/features/auth/auth.dart';
 
 enum MainTab { dashboard, medicines, sales, inventory }
 

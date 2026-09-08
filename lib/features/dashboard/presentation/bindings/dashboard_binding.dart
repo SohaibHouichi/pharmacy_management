@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
 import 'package:pharmacy_management/features/dashboard/data/repository/dashboard_repository_impl.dart';
 import 'package:pharmacy_management/features/dashboard/domain/repository/dashboard_repository.dart';

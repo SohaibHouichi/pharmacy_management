@@ -1,4 +1,4 @@
-import 'package:pharmacy_management/core/shared/config/status_style.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart' show MedicineEntity;
 
 

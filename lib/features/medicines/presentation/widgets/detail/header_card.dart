@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/shared/widgets/status_badge_row.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicine_status_x.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 

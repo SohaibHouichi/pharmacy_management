@@ -1,10 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pharmacy_management/core/domain/paginated.dart';
-import 'package:pharmacy_management/core/error/exceptions.dart';
-import 'package:pharmacy_management/core/network/api_endpoints.dart';
-import 'package:pharmacy_management/core/network/api_response.dart';
-import 'package:pharmacy_management/core/network/dio_exception_handler.dart';
-import 'package:pharmacy_management/core/utils/json_utils.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_creation_request.dart';
 import 'package:pharmacy_management/features/medicines/data/models/requests/medicines_updating_request.dart';
 import 'package:pharmacy_management/features/medicines/data/models/responses/category_response.dart';
@@ -85,7 +80,7 @@ class MedicinesRemoteDataSourceImpl implements MedicinesRemoteDataSource {
         queryParameters: {
           'page': page,
           if (query != null && query.trim().isNotEmpty) 'q': query.trim(),
-          if (categoryId != null) 'category_id': categoryId,
+          'category_id': ?categoryId,
         },
       );
       final body = res.data as Map<String, dynamic>;

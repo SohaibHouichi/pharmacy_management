@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/form/cart_list.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/form/sale_form_footer.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/form/sale_search_section.dart';

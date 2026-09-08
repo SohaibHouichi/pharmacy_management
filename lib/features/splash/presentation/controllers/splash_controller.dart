@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
-import 'package:pharmacy_management/features/auth/domain/usecase/get_current_user.dart';
+import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/features/auth/auth.dart';
 
 class SplashController extends GetxController {
   final GetCurrentUser getCurrentUserUseCase;

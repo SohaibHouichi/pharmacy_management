@@ -1,4 +1,4 @@
-import 'package:pharmacy_management/core/domain/expiry_status.dart' show ExpiryStatus;
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/category_entity.dart';
 
 class MedicineEntity {

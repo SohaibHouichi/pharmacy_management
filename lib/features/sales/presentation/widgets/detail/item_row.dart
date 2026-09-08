@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_entity.dart';
 
 class ItemRow extends StatelessWidget {
@@ -26,8 +23,7 @@ class ItemRow extends StatelessWidget {
                     color: item.medicineDeleted
                         ? AppColors.textHint
                         : AppColors.textPrimary,
-                    fontStyle:
-                        item.medicineDeleted ? FontStyle.italic : null,
+                    fontStyle: item.medicineDeleted ? FontStyle.italic : null,
                   ),
                 ),
                 const SizedBox(height: 2),

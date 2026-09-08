@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_management/core/shared/config/status_style.dart';
-import 'package:pharmacy_management/core/shared/widgets/app_state_view.dart';
-import 'package:pharmacy_management/core/shared/widgets/status_badge.dart';
-import 'package:pharmacy_management/core/theme/app_colors.dart';
-import 'package:pharmacy_management/core/theme/app_fonts.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 
 class LowStockTile extends StatelessWidget {
@@ -53,12 +50,14 @@ class LowStockTile extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                medicine.quantity == 0 ?
-                StatusBadge(style: StatusConfig.outOfStock)
-                :Text( 
-                  'Still only ${medicine.quantity}',
-                  style: AppFonts.caption.copyWith(color: AppColors.error),
-                )
+                medicine.quantity == 0
+                    ? StatusBadge(style: StatusConfig.outOfStock)
+                    : Text(
+                        'Still only ${medicine.quantity}',
+                        style: AppFonts.caption.copyWith(
+                          color: AppColors.error,
+                        ),
+                      ),
               ],
             ),
           ],

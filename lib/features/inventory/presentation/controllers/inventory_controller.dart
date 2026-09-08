@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/features/dashboard/presentation/controllers/dashboard_controller.dart';
+import 'package:pharmacy_management/features/dashboard/dashboard.dart';
 import 'package:pharmacy_management/features/inventory/domain/entity/inventory_alerts_entity.dart';
 import 'package:pharmacy_management/features/inventory/domain/usecase/get_inventory_alerts.dart';
-import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
-import 'package:pharmacy_management/features/medicines/presentation/controllers/medicines_controller.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
 
 enum AlertTab { lowStock, expiringSoon, expired }
 

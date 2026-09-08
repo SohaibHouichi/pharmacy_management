@@ -15,7 +15,7 @@ class CartList extends GetView<SaleFormController> {
       return ListView.separated(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
         itemCount: controller.cart.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 10),
+        separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemBuilder: (_, i) => CartLineTile(index: i),
       );
     });

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/utils/form_error_mixin.dart';
-import 'package:pharmacy_management/core/utils/validators.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/domain/entity/inventory_params.dart';
 import 'package:pharmacy_management/features/inventory/domain/usecase/update_stock.dart';
-import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
 
 class InventoryFormController extends GetxController with FormErrorsMixin {
   final UpdateStock updateStock;

@@ -1,10 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/constant/app_constants.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
-import 'package:pharmacy_management/core/utils/form_error_mixin.dart';
-import 'package:pharmacy_management/core/utils/validators.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/auth/data/models/requests/auth_request.dart';
 import 'package:pharmacy_management/features/auth/domain/usecase/login.dart';
 import 'package:pharmacy_management/features/auth/domain/usecase/logout.dart';

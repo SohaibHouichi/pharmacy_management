@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pharmacy_management/core/network/api_endpoints.dart';
-import 'package:pharmacy_management/core/network/api_response.dart';
-import 'package:pharmacy_management/core/network/dio_exception_handler.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/data/models/responses/dashboard_response.dart';
 
 abstract class DashboardRemoteDataSource {

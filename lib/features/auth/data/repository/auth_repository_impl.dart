@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:pharmacy_management/core/error/failures.dart';
-import 'package:pharmacy_management/core/error/guard.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:pharmacy_management/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:pharmacy_management/features/auth/data/models/requests/auth_request.dart';
