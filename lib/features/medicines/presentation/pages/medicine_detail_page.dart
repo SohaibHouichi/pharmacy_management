@@ -15,7 +15,7 @@ class MedicineDetailPage extends GetView<MedicinesDetailController> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Medicine details')),
-      body: SafeArea(child: Obx(() => _buildBody())),
+      body: SafeArea(child: ResponsiveBody(child: Obx(() => _buildBody()))),
     );
   }
 

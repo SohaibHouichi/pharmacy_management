@@ -18,3 +18,4 @@ export 'widgets/lazy_indexed_stack.dart';
 export 'widgets/paginated_list_view.dart';
 export 'widgets/status_badge.dart';
 export 'widgets/status_badge_row.dart';
+export 'widgets/responsive_body.dart';

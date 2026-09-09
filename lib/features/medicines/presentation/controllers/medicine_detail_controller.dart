@@ -17,7 +17,6 @@ class MedicinesDetailController extends GetxController {
 void onInit() {
   super.onInit();
   final passed = Get.arguments as int?;
-  print('DETAIL: arguments = ${Get.arguments} (${Get.arguments.runtimeType})');
   medicineId = passed ?? 0;
   load();
 }

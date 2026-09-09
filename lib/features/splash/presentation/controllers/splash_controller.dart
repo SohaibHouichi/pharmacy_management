@@ -20,7 +20,6 @@ class SplashController extends GetxController {
 
   Future<void> _decideStartRoute() async {
     final hasToken = await session.hasToken();
-    print('SPLASH: hasToken = $hasToken');
 
     if (!hasToken) {
       Get.offAllNamed(AppRoute.login);

@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/core/network/api_client.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
+
 
 
 class InitialBinding extends Bindings {

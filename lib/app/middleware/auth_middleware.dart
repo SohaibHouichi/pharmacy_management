@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/core/services/session_service.dart';
+import 'package:pharmacy_management/core/core.dart';
+
 
 /// Blocks protected routes when no user is in session.
 class AuthMiddleware extends GetMiddleware {

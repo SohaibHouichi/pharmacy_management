@@ -33,17 +33,26 @@ class AppDateField extends StatelessWidget {
   }
 
   Future<void> _pick(BuildContext context) async {
-    final now = DateTime.now();
-    final picked = await showDatePicker(
-      context: context,
-      // Defaults to a year out, which suits expiry dates.
-      initialDate: value ?? now.add(const Duration(days: 365)),
-      firstDate: firstDate ?? now,
-      lastDate: lastDate ?? DateTime(now.year + 20),
-    );
-    if (picked != null) onChanged(picked);
-  }
+  final now = DateTime.now();
+  final today = DateTime(now.year, now.month, now.day);
 
+  // An existing medicine may already be expired, so allow its date through.
+  final first = firstDate ?? (value != null && value!.isBefore(today) ? value! : today);
+  final last = lastDate ?? DateTime(now.year + 20);
+
+  // Clamp so initialDate can never fall outside the allowed range.
+  var initial = value ?? today.add(const Duration(days: 365));
+  if (initial.isBefore(first)) initial = first;
+  if (initial.isAfter(last)) initial = last;
+
+  final picked = await showDatePicker(
+    context: context,
+    initialDate: initial,
+    firstDate: first,
+    lastDate: last,
+  );
+  if (picked != null) onChanged(picked);
+}
   @override
   Widget build(BuildContext context) {
     final hasValue = value != null;

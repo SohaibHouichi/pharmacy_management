@@ -11,7 +11,7 @@ class LowStockTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expiringSoon = medicine.isExpiringSoon || medicine.isExpired;
+  //  final expiringSoon = medicine.isExpiringSoon || medicine.isExpired;
 
     return InkWell(
       onTap: onTap,
@@ -53,7 +53,7 @@ class LowStockTile extends StatelessWidget {
                 medicine.quantity == 0
                     ? StatusBadge(style: StatusConfig.outOfStock)
                     : Text(
-                        'Still only ${medicine.quantity}',
+                        '${medicine.quantity}',
                         style: AppFonts.caption.copyWith(
                           color: AppColors.error,
                         ),

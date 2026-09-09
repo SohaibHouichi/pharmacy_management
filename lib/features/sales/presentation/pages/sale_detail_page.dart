@@ -7,7 +7,6 @@ import 'package:pharmacy_management/features/sales/presentation/widgets/detail/i
 import 'package:pharmacy_management/features/sales/presentation/widgets/detail/items_card.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/detail/summary_card.dart';
 
-
 class SaleDetailPage extends GetView<SaleDetailController> {
   const SaleDetailPage({super.key});
 
@@ -16,7 +15,7 @@ class SaleDetailPage extends GetView<SaleDetailController> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Invoice')),
-      body: SafeArea(child: Obx(() => _buildBody())),
+      body: SafeArea(child: ResponsiveBody(child: Obx(() => _buildBody()))),
     );
   }
 
@@ -53,5 +52,3 @@ class SaleDetailPage extends GetView<SaleDetailController> {
     );
   }
 }
-
-

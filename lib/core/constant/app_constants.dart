@@ -2,7 +2,7 @@ abstract class AppConstants {
   // ─── App ────────────────────────────────────────────────
   static const String appName = 'Pharmacy Management';
   static const String appVersion = '1.0.0';
-  static const String appBrand = 'MedCare Pharmacy';
+  static const String appBrand = 'PharmaSI';
 
   // ─── Navigation tabs ────────────────────────────────────
   static const String dashboardLabel = 'Dashboard';

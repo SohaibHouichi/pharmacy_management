@@ -5,7 +5,7 @@ import 'package:pharmacy_management/core/network/api_endpoints.dart';
 import 'package:pharmacy_management/core/services/session_service.dart';
 import 'package:pharmacy_management/core/storage/storage_keys.dart';
 import 'package:pharmacy_management/core/storage/storage_service.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+// import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class AuthInterceptor extends Interceptor {
   @override
@@ -55,15 +55,15 @@ class ApiClient {
 
   static void _setInterceptors() {
     _dio!.interceptors.add(AuthInterceptor());
-    _dio!.interceptors.add(
-      PrettyDioLogger(
-        request: true,
-        requestBody: true,
-        responseBody: true,
-        responseHeader: false,
-        error: true,
-      ),
-    );
+    // _dio!.interceptors.add(
+    //   PrettyDioLogger(
+    //     request: true,
+    //     requestBody: true,
+    //     responseBody: true,
+    //     responseHeader: false,
+    //     error: true,
+    //   ),
+    // );
   }
 
   static Dio getDio() {
@@ -80,7 +80,7 @@ class ApiClient {
         ..options.connectTimeout = timeout
         ..options.receiveTimeout = timeout;
       _setStaticHeaders();
-      _setInterceptors();
+     _setInterceptors();
     }
     return _dio!;
   }

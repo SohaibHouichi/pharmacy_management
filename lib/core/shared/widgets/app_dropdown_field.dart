@@ -42,7 +42,7 @@ class AppDropdownField<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasError = errorText != null;
+   // final hasError = errorText != null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
