@@ -32,7 +32,7 @@ class MedicineFormPage extends GetView<MedicineFormController> {
                       ),
                       const SizedBox(height: 20),
                     ],
-            
+
                     AppTextField(
                       controller: controller.nameCtrl,
                       label: AppConstants.nameLabel,
@@ -42,7 +42,7 @@ class MedicineFormPage extends GetView<MedicineFormController> {
                       onChanged: (_) => controller.clearFieldError('name'),
                     ),
                     const SizedBox(height: 18),
-            
+
                     AppDropdownField<int>(
                       label: AppConstants.categoryLabel,
                       hint: controller.isLoadingCategories.value
@@ -53,27 +53,25 @@ class MedicineFormPage extends GetView<MedicineFormController> {
                       enabled: !controller.isLoadingCategories.value,
                       prefixIcon: Icons.category_outlined,
                       onChanged: controller.onCategoryChanged,
-                      items: controller.categories
-                          .map((c) => DropdownMenuItem(
-                                value: c.id,
-                                child: Text(c.name),
-                              ))
+                      options: controller.categories
+                          .map((c) => (value: c.id, label: c.name))
                           .toList(),
                     ),
                     const SizedBox(height: 18),
-            
+
                     AppTextField(
                       controller: controller.priceCtrl,
                       label: AppConstants.priceLabel,
                       hint: 'e.g. 8.50',
                       prefixIcon: Icons.payments_outlined,
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
                       validator: controller.validatePrice,
                       onChanged: (_) => controller.clearFieldError('price'),
                     ),
                     const SizedBox(height: 18),
-            
+
                     // Quantity is create-only; edits go through inventory.
                     if (!controller.isEditing) ...[
                       AppTextField(
@@ -83,12 +81,13 @@ class MedicineFormPage extends GetView<MedicineFormController> {
                         prefixIcon: Icons.numbers,
                         keyboardType: TextInputType.number,
                         validator: controller.validateQuantity,
-                        onChanged: (_) => controller.clearFieldError('quantity'),
+                        onChanged: (_) =>
+                            controller.clearFieldError('quantity'),
                       ),
                       const SizedBox(height: 18),
                     ] else
                       const StockNotice(),
-            
+
                     AppDateField(
                       label: AppConstants.expiryDateLabel,
                       hint: 'Select expiry date',
@@ -97,7 +96,7 @@ class MedicineFormPage extends GetView<MedicineFormController> {
                       onChanged: controller.onExpiryChanged,
                     ),
                     const SizedBox(height: 32),
-            
+
                     AppButton(
                       label: controller.submitLabel,
                       isLoading: controller.isSaving.value,

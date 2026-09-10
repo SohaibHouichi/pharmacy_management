@@ -1,26 +1,14 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/middleware/auth_middleware.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
-import 'package:pharmacy_management/features/shell/presentation/bindings/main_binding.dart';
-import 'package:pharmacy_management/features/shell/presentation/pages/main_page.dart';
-import 'package:pharmacy_management/features/auth/presentation/bindings/auth_binding.dart';
-import 'package:pharmacy_management/features/auth/presentation/pages/login_page.dart';
-import 'package:pharmacy_management/features/dashboard/presentation/bindings/dashboard_binding.dart';
-import 'package:pharmacy_management/features/inventory/presentation/bindings/inventory_binding.dart';
-import 'package:pharmacy_management/features/inventory/presentation/bindings/inventory_form_binding.dart';
-import 'package:pharmacy_management/features/inventory/presentation/pages/inventory_form_page.dart';
-import 'package:pharmacy_management/features/medicines/presentation/bindings/medicine_detail_binding.dart';
-import 'package:pharmacy_management/features/medicines/presentation/bindings/medicine_form_binding.dart';
-import 'package:pharmacy_management/features/medicines/presentation/bindings/medicines_binding.dart';
-import 'package:pharmacy_management/features/medicines/presentation/pages/medicine_detail_page.dart';
-import 'package:pharmacy_management/features/medicines/presentation/pages/medicine_form_page.dart';
-import 'package:pharmacy_management/features/sales/presentation/bindings/sales_binding.dart';
-import 'package:pharmacy_management/features/sales/presentation/bindings/sale_detail_binding.dart';
-import 'package:pharmacy_management/features/sales/presentation/bindings/sale_form_binding.dart';
-import 'package:pharmacy_management/features/sales/presentation/pages/sale_detail_page.dart';
-import 'package:pharmacy_management/features/sales/presentation/pages/sale_form_page.dart';
-import 'package:pharmacy_management/features/splash/presentation/bindings/splash_binding.dart';
-import 'package:pharmacy_management/features/splash/presentation/pages/splash_page.dart';
+import 'package:pharmacy_management/features/shell/shell.dart';
+import 'package:pharmacy_management/features/auth/auth.dart';
+import 'package:pharmacy_management/features/dashboard/dashboard.dart';
+import 'package:pharmacy_management/features/inventory/inventory.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
+import 'package:pharmacy_management/features/sales/sales.dart';
+import 'package:pharmacy_management/features/splash/splash.dart';
+
 
 abstract class AppGetRoute {
   static List<GetPage<dynamic>> getPages() {

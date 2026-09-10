@@ -39,7 +39,7 @@ class StatsGrid extends StatelessWidget {
           ),
           StatCard(
             label: "Today's revenue",
-            value: data.todaySales.total.toStringAsFixed(2),
+            value: data.todaySales.total.toString(),
             icon: Icons.payments_outlined,
             color: AppColors.success,
             surface: AppColors.successSurface,

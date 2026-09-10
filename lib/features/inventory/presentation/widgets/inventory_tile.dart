@@ -4,11 +4,11 @@ import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicine_status_x.dart';
 import 'package:pharmacy_management/features/medicines/domain/entity/medicines_entity.dart';
 
-class AlertTile extends StatelessWidget {
+class InventoryTile extends StatelessWidget {
   final MedicineEntity medicine;
   final VoidCallback onUpdateStock;
 
-  const AlertTile({
+  const InventoryTile({
     super.key,
     required this.medicine,
     required this.onUpdateStock,
@@ -29,7 +29,16 @@ class AlertTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border(
+          left: BorderSide(
+            color: medicine.isExpired || medicine.quantity == 0
+                ? AppColors.error
+                : medicine.isExpiringSoon || medicine.isLowStock
+                ? AppColors.warning
+                : AppColors.primary,
+            width: 2,
+          ),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,10 +74,7 @@ class AlertTile extends StatelessWidget {
                           : AppColors.textPrimary,
                     ),
                   ),
-                  Text(
-                    '/${medicine.minStockLevel}',
-                    style: AppFonts.caption,
-                  ),
+                  Text('/${medicine.minStockLevel}', style: AppFonts.caption),
                 ],
               ),
             ],
@@ -76,13 +82,26 @@ class AlertTile extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              const Icon(
+               Icon(
                 Icons.event_outlined,
                 size: 14,
-                color: AppColors.textSecondary,
+                color: medicine.isExpiringSoon
+                      ? AppColors.warning
+                      : medicine.isExpired
+                      ? AppColors.error
+                      : AppColors.textSecondary,
               ),
               const SizedBox(width: 5),
-              Text('Expires $_expiry', style: AppFonts.caption),
+              Text(
+                'Expires $_expiry',
+                style: AppFonts.caption.copyWith(
+                  color: medicine.isExpiringSoon
+                      ? AppColors.warning
+                      : medicine.isExpired
+                      ? AppColors.error
+                      : AppColors.textSecondary,
+                ),
+              ),
             ],
           ),
           if (medicine.badges.isNotEmpty) ...[
@@ -90,18 +109,16 @@ class AlertTile extends StatelessWidget {
             StatusBadgeRow(styles: medicine.badges),
           ],
           const SizedBox(height: 10),
-          if (medicine.isLowStock) ...[
-            const Divider(height: 1),
-            const SizedBox(height: 4),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton.icon(
-                onPressed: onUpdateStock,
-                icon: const Icon(Icons.edit_outlined, size: 16),
-                label: const Text('Update stock'),
-              ),
+          const Divider(height: 1),
+          const SizedBox(height: 4),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              onPressed: onUpdateStock,
+              icon: const Icon(Icons.edit_outlined, size: 16),
+              label: const Text('Update stock'),
             ),
-          ],
+          ),
         ],
       ),
     );

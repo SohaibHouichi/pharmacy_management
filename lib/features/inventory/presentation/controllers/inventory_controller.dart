@@ -1,45 +1,69 @@
 import 'package:get/get.dart';
 import 'package:pharmacy_management/app/routes/app_route.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/dashboard/dashboard.dart';
 import 'package:pharmacy_management/features/inventory/domain/entity/inventory_alerts_entity.dart';
 import 'package:pharmacy_management/features/inventory/domain/usecase/get_inventory_alerts.dart';
 import 'package:pharmacy_management/features/medicines/medicines.dart';
 
-enum AlertTab { lowStock, expiringSoon, expired }
+enum InventoryTab { all, lowStock, expiringSoon, expired }
 
 class InventoryController extends GetxController {
   final GetInventoryAlerts getInventoryAlerts;
+  final GetMedicines getMedicines;
 
-  InventoryController({required this.getInventoryAlerts});
+  InventoryController({
+    required this.getInventoryAlerts,
+    required this.getMedicines,
+  });
 
   final Rxn<InventoryAlertsEntity> alerts = Rxn<InventoryAlertsEntity>();
+  final medicines = <MedicineEntity>[].obs;
+
   final isLoading = false.obs;
+  final isLoadingMore = false.obs;
   final errorMessage = RxnString();
-  final selectedTab = AlertTab.lowStock.obs;
+  final selectedTab = InventoryTab.all.obs;
+  final totalMedicines = 0.obs;
+
+  final _currentPage = 1.obs;
+  final _lastPage = 1.obs;
+
+  /// Only the "all" tab paginates — alert lists arrive complete.
+  bool get hasNextPage =>
+      selectedTab.value == InventoryTab.all && _currentPage.value < _lastPage.value;
 
   bool get isEmpty =>
-      alerts.value == null && !isLoading.value && errorMessage.value == null;
+      visibleMedicines.isEmpty &&
+      !isLoading.value &&
+      errorMessage.value == null;
 
   /// The medicines shown for the currently selected tab.
   List<MedicineEntity> get visibleMedicines {
+    if (selectedTab.value == InventoryTab.all) return medicines;
+
     final data = alerts.value;
     if (data == null) return const [];
 
     return switch (selectedTab.value) {
-      AlertTab.lowStock => data.lowStock,
-      AlertTab.expiringSoon => data.expiringSoon,
-      AlertTab.expired => data.expired,
+      InventoryTab.lowStock => data.lowStock,
+      InventoryTab.expiringSoon => data.expiringSoon,
+      InventoryTab.expired => data.expired,
+      InventoryTab.all => medicines,
     };
   }
 
-  int countFor(AlertTab tab) {
+  int countFor(InventoryTab tab) {
+    if (tab == InventoryTab.all) return totalMedicines.value;
+
     final data = alerts.value;
     if (data == null) return 0;
 
     return switch (tab) {
-      AlertTab.lowStock => data.lowStock.length,
-      AlertTab.expiringSoon => data.expiringSoon.length,
-      AlertTab.expired => data.expired.length,
+      InventoryTab.lowStock => data.lowStock.length,
+      InventoryTab.expiringSoon => data.expiringSoon.length,
+      InventoryTab.expired => data.expired.length,
+      InventoryTab.all => totalMedicines.value,
     };
   }
 
@@ -53,16 +77,50 @@ class InventoryController extends GetxController {
     isLoading.value = true;
     errorMessage.value = null;
 
-    final result = await getInventoryAlerts();
+    final alertsResult = await getInventoryAlerts();
+    final medicinesResult = await getMedicines(page: 1);
 
     isLoading.value = false;
-    result.fold(
+
+    alertsResult.fold(
       (failure) => errorMessage.value = failure.message,
       (data) => alerts.value = data,
     );
+
+    medicinesResult.fold(
+      (failure) => errorMessage.value = failure.message,
+      (page) {
+        medicines.value = page.items;
+        _applyMeta(page);
+      },
+    );
   }
 
-  void changeTab(AlertTab tab) => selectedTab.value = tab;
+  Future<void> loadNextPage() async {
+    // Guard against the scroll listener double-firing.
+    if (isLoadingMore.value || isLoading.value || !hasNextPage) return;
+
+    isLoadingMore.value = true;
+    final result = await getMedicines(page: _currentPage.value + 1);
+    isLoadingMore.value = false;
+
+    result.fold(
+      // A failed append shouldn't wipe the list already on screen.
+      (failure) => Get.snackbar('Error', failure.message),
+      (page) {
+        medicines.addAll(page.items);
+        _applyMeta(page);
+      },
+    );
+  }
+
+  void _applyMeta(Paginated<MedicineEntity> page) {
+    _currentPage.value = page.meta.currentPage;
+    _lastPage.value = page.meta.lastPage;
+    totalMedicines.value = page.meta.total;
+  }
+
+  void changeTab(InventoryTab tab) => selectedTab.value = tab;
 
   Future<void> openStockForm(MedicineEntity medicine) async {
     final updated = await Get.toNamed(

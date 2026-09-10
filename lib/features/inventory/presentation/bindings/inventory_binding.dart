@@ -5,6 +5,7 @@ import 'package:pharmacy_management/features/inventory/data/repository/inventory
 import 'package:pharmacy_management/features/inventory/domain/repository/inventory_repository.dart';
 import 'package:pharmacy_management/features/inventory/domain/usecase/get_inventory_alerts.dart';
 import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
 
 class InventoryBinding extends Bindings {
   @override
@@ -24,7 +25,10 @@ class InventoryBinding extends Bindings {
       fenix: true,
     );
     Get.put<InventoryController>(
-      InventoryController(getInventoryAlerts: Get.find<GetInventoryAlerts>()),
+      InventoryController(
+        getInventoryAlerts: Get.find<GetInventoryAlerts>(),
+        getMedicines: Get.find<GetMedicines>(),
+      ),
     );
   }
 }

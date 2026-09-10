@@ -21,7 +21,11 @@ class SaleFormFooter extends GetView<SaleFormController> {
           children: [
             if (controller.errorMessage.value != null) ...[
               AppMessageBanner(
-                message: controller.errorMessage.value!,
+                message: controller.cart.any((i) => i.medicine.isExpired)
+                    ? controller.fieldErrors[controller.isMedicineId]!.first
+                          .toString()
+                    : controller.fieldErrors[controller.isQuantiy]!.first
+                          .toString(),
                 onDismiss: () => controller.errorMessage.value = null,
               ),
               const SizedBox(height: 14),

@@ -11,7 +11,7 @@ class LowStockTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  //  final expiringSoon = medicine.isExpiringSoon || medicine.isExpired;
+    //  final expiringSoon = medicine.isExpiringSoon || medicine.isExpired;
 
     return InkWell(
       onTap: onTap,
@@ -24,12 +24,16 @@ class LowStockTile extends StatelessWidget {
               width: 42,
               height: 42,
               decoration: BoxDecoration(
-                color: AppColors.warningSurface,
+                color:  medicine.quantity == 0
+                    ? AppColors.errorSurface
+                    : AppColors.warningSurface,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.medication_outlined,
-                color: AppColors.warning,
+                color: medicine.quantity == 0
+                    ? AppColors.error
+                    : AppColors.warning,
                 size: 20,
               ),
             ),
@@ -54,8 +58,8 @@ class LowStockTile extends StatelessWidget {
                     ? StatusBadge(style: StatusConfig.outOfStock)
                     : Text(
                         '${medicine.quantity}',
-                        style: AppFonts.caption.copyWith(
-                          color: AppColors.error,
+                        style: AppFonts.bodyMedium.copyWith(
+                          color: AppColors.warning,
                         ),
                       ),
               ],

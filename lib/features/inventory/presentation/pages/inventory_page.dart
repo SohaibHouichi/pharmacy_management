@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:pharmacy_management/core/shared/shared.dart';
 import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
-import 'package:pharmacy_management/features/inventory/presentation/widgets/alert_tab_bar.dart';
-import 'package:pharmacy_management/features/inventory/presentation/widgets/alert_tile.dart';
+import 'package:pharmacy_management/features/inventory/presentation/widgets/inventory_tab_bar.dart';
+import 'package:pharmacy_management/features/inventory/presentation/widgets/inventory_tile.dart';
+import 'package:pharmacy_management/features/medicines/medicines.dart';
 
 class InventoryPage extends GetView<InventoryController> {
   const InventoryPage({super.key});
@@ -14,19 +15,19 @@ class InventoryPage extends GetView<InventoryController> {
     // No Scaffold — MainPage owns it.
     return Column(
       children: [
-        const AlertTabBar(),
+        const InventoryTabBar(),
         Expanded(child: Obx(() => _buildBody())),
       ],
     );
   }
 
   Widget _buildBody() {
-    if (controller.isLoading.value && controller.alerts.value == null) {
+    if (controller.isLoading.value && controller.visibleMedicines.isEmpty) {
       return const AppLoadingView();
     }
 
     final error = controller.errorMessage.value;
-    if (error != null && controller.alerts.value == null) {
+    if (error != null && controller.visibleMedicines.isEmpty) {
       return AppErrorView(message: error, onRetry: controller.load);
     }
 
@@ -49,21 +50,18 @@ class InventoryPage extends GetView<InventoryController> {
       );
     }
 
-    return RefreshIndicator(
-      color: AppColors.primary,
+    return PaginatedListView<MedicineEntity>(
+      // Rebuild the scroll controller when switching tabs, so position resets.
+      key: ValueKey(controller.selectedTab.value),
+      items: medicines,
+      isLoadingMore: controller.isLoadingMore.value,
+      hasNextPage: controller.hasNextPage,
       onRefresh: controller.load,
-      child: ListView.separated(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: medicines.length,
-        separatorBuilder: (_, _) => const SizedBox(height: 12),
-        itemBuilder: (_, i) {
-          final medicine = medicines[i];
-          return AlertTile(
-            medicine: medicine,
-            onUpdateStock: () => controller.openStockForm(medicine),
-          );
-        },
+      onLoadMore: controller.loadNextPage,
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+      itemBuilder: (_, medicine, __) => InventoryTile(
+        medicine: medicine,
+        onUpdateStock: () => controller.openStockForm(medicine),
       ),
     );
   }

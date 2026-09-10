@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/medicines/medicines.dart';
 import 'package:pharmacy_management/features/sales/domain/entity/sale_params.dart';
 import 'package:pharmacy_management/features/sales/domain/usecase/create_sale.dart';
@@ -15,7 +16,7 @@ class CartLine {
   bool get exceedsStock => quantity > medicine.quantity;
 }
 
-class SaleFormController extends GetxController {
+class SaleFormController extends GetxController with FormErrorsMixin {
   final CreateSale createSale;
   final GetMedicines getMedicines;
 
@@ -25,11 +26,18 @@ class SaleFormController extends GetxController {
   final searchResults = <MedicineEntity>[].obs;
   final searchController = TextEditingController();
 
+  //for error management 
+  final isQuantiy = 'quantity';
+  final isMedicineId = 'items.0.medicine_id';
+
   final isSearching = false.obs;
   final isSaving = false.obs;
-  final errorMessage = RxnString();
+  // final errorMessage = RxnString();
 
-  bool get canSubmit => cart.isNotEmpty && !cart.any((l) => l.exceedsStock);
+  bool get canSubmit =>
+      cart.isNotEmpty &&
+      //!cart.any((l) => l.exceedsStock) &&
+      !cart.any((i) => i.medicine.isExpired); //for check
 
   /// Client-side preview only — the server's total is authoritative.
   double get estimatedTotal => cart.fold(0, (sum, line) => sum + line.total);
@@ -50,12 +58,14 @@ class SaleFormController extends GetxController {
     );
   }
 
+  // local exprience  --------------------------------------------------------
   void addToCart(MedicineEntity medicine) {
-    final existing = cart.indexWhere((l) => l.medicine.id == medicine.id);
+    final existing = cart.indexWhere((l) => l.medicine.id == medicine.id); // |
     if (existing >= 0) {
-      changeQuantity(existing, cart[existing].quantity + 1);
-      return;
-    }
+      // |
+      changeQuantity(existing, cart[existing].quantity + 1); // |
+      return; // |
+    } // |
     cart.add(CartLine(medicine: medicine));
     clearSearch();
   }
@@ -67,6 +77,7 @@ class SaleFormController extends GetxController {
   }
 
   void removeLine(int index) => cart.removeAt(index);
+  // -----------------------------------------------------------------
 
   Future<void> submit() async {
     if (!canSubmit) return;
@@ -86,15 +97,11 @@ class SaleFormController extends GetxController {
 
     isSaving.value = false;
 
-    result.fold(
-      // 422 here means insufficient stock or expired medicine.
-      (failure) => errorMessage.value = failure.message,
-      (sale) {
-        Get.back(result: true);
-        Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
-        Get.find<MedicinesController>().refreshList();
-      },
-    );
+    result.fold(handleFailure, (sale) {
+      Get.back(result: true);
+      Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
+      Get.find<MedicinesController>().refreshList();
+    });
   }
 
   @override

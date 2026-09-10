@@ -4,13 +4,14 @@ import 'package:pharmacy_management/core/shared/shared.dart';
 import 'package:pharmacy_management/core/core.dart';
 import 'package:pharmacy_management/features/inventory/presentation/controllers/inventory_controller.dart';
 
-class AlertTabBar extends GetView<InventoryController> {
-  const AlertTabBar({super.key});
+class InventoryTabBar extends GetView<InventoryController> {
+  const InventoryTabBar({super.key});
 
-  StatusStyle _styleFor(AlertTab tab) => switch (tab) {
-        AlertTab.lowStock => StatusConfig.lowStock,
-        AlertTab.expiringSoon => StatusConfig.expiringSoon,
-        AlertTab.expired => StatusConfig.expired,
+  StatusStyle _styleFor(InventoryTab tab) => switch (tab) {
+        InventoryTab.all => StatusConfig.inStock,
+        InventoryTab.lowStock => StatusConfig.lowStock,
+        InventoryTab.expiringSoon => StatusConfig.expiringSoon,
+        InventoryTab.expired => StatusConfig.expired,
       };
 
   @override
@@ -19,7 +20,7 @@ class AlertTabBar extends GetView<InventoryController> {
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       child: Obx(
         () => Row(
-          children: AlertTab.values.map((tab) {
+          children: InventoryTab.values.map((tab) {
             final isActive = controller.selectedTab.value == tab;
             final style = _styleFor(tab);
             final count = controller.countFor(tab);

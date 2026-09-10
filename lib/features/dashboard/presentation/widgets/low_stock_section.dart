@@ -40,12 +40,12 @@ class LowStockSection extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.errorSurface,
+                  color: AppColors.warningSurface,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   '${data.lowStockCount}',
-                  style: AppFonts.caption.copyWith(color: AppColors.error),
+                  style: AppFonts.caption.copyWith(color: AppColors.warning),
                 ),
               ),
           ],

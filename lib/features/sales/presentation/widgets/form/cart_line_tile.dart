@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_management/core/core.dart';
+import 'package:pharmacy_management/core/shared/shared.dart';
 import 'package:pharmacy_management/features/sales/presentation/controllers/sale_form_controller.dart';
 import 'package:pharmacy_management/features/sales/presentation/widgets/form/qty_button.dart';
 
@@ -52,6 +53,14 @@ class CartLineTile extends GetView<SaleFormController> {
             ],
           ),
           const SizedBox(height: 10),
+          if (line.medicine.isExpired) ...[
+            Align(
+              alignment: .centerStart,
+              child: StatusBadge(style: StatusConfig.expired),
+            ),
+            const SizedBox(height: 10),
+          ],
+
           Row(
             children: [
               QtyButton(

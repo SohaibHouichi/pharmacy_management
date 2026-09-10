@@ -29,7 +29,17 @@ class MedicineTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.border),
+          border: Border(
+            left: BorderSide(
+              color: medicine.isExpired || medicine.quantity == 0
+                  ? AppColors.error
+                  : medicine.isExpiringSoon || medicine.isLowStock
+                  ? AppColors.warning
+                  : AppColors.primary,
+                  width: 2
+            ),
+            
+          ),
         ),
         child: Row(
           children: [
@@ -37,12 +47,20 @@ class MedicineTile extends StatelessWidget {
               width: 46,
               height: 46,
               decoration: BoxDecoration(
-                color: AppColors.primarySurface,
+                color: medicine.isExpired || medicine.quantity == 0
+                    ? AppColors.errorSurface
+                    : medicine.isExpiringSoon || medicine.isLowStock
+                    ? AppColors.warningSurface
+                    : AppColors.primarySurface,
                 borderRadius: BorderRadius.circular(13),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.medication_outlined,
-                color: AppColors.primary,
+                color: medicine.isExpired || medicine.quantity == 0
+                    ? AppColors.error
+                    : medicine.isExpiringSoon || medicine.isLowStock
+                    ? AppColors.warning
+                    : AppColors.primary,
                 size: 22,
               ),
             ),
