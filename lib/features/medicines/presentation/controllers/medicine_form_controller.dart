@@ -141,7 +141,7 @@ class MedicineFormController extends GetxController with FormErrorsMixin {
 
     result.fold(handleFailure, (_) {
       // `true` tells the list to refresh.
-      Get.back(result: true);
+      Get.back(result: true , closeOverlays: true);
       Get.snackbar('Saved', isEditing ? 'Medicine updated' : 'Medicine added');
     });
   }

@@ -98,7 +98,7 @@ class SaleFormController extends GetxController with FormErrorsMixin {
     isSaving.value = false;
 
     result.fold(handleFailure, (sale) {
-      Get.back(result: true);
+      Get.back(result: true , closeOverlays: true);
       Get.snackbar('Sale created', 'Invoice ${sale.invoiceNumber}');
       Get.find<MedicinesController>().refreshList();
     });

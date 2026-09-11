@@ -70,7 +70,7 @@ class InventoryFormController extends GetxController with FormErrorsMixin {
     isSaving.value = false;
 
     result.fold(handleFailure, (updated) {
-      Get.back(result: true);
+      Get.back(result: true , closeOverlays: true);
       Get.snackbar(
         'Stock updated',
         '${medicine.name}: ${updated.quantityBefore} → ${updated.quantityAfter}',
