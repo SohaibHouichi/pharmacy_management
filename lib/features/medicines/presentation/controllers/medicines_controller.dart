@@ -154,6 +154,7 @@ class MedicinesController extends GetxController {
       items.removeWhere((m) => m.id == medicine.id);
       total.value = (total.value - 1).clamp(0, total.value);
       await _refreshDashboard();
+      await _refreshInventory();
       Get.snackbar('Deleted', '${medicine.name} removed');
     });
   }

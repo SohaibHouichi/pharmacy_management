@@ -59,7 +59,7 @@ class InventoryPage extends GetView<InventoryController> {
       onRefresh: controller.load,
       onLoadMore: controller.loadNextPage,
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-      itemBuilder: (_, medicine, __) => InventoryTile(
+      itemBuilder: (_, medicine, _) => InventoryTile(
         medicine: medicine,
         onUpdateStock: () => controller.openStockForm(medicine),
       ),
