@@ -41,7 +41,7 @@ abstract class AppConstants {
       'All medicines are sufficiently stocked.';
 
   // ─── Timing ─────────────────────────────────────────────
-  static const Duration searchDebounce = Duration(milliseconds: 1);
+  static const Duration searchDebounce = Duration(seconds : 2);
 
   // ─── Pagination (API Guide: `page` / `per_page`, max 50) ─
   static const int defaultPageSize = 15;
