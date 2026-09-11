@@ -153,8 +153,7 @@ class MedicinesController extends GetxController {
       // Remove locally so the list doesn't flicker, then resync counts.
       items.removeWhere((m) => m.id == medicine.id);
       total.value = (total.value - 1).clamp(0, total.value);
-      await _refreshDashboard();
-      await _refreshInventory();
+      await  refreshList();
       Get.snackbar('Deleted', '${medicine.name} removed');
     });
   }
