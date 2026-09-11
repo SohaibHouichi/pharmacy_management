@@ -34,7 +34,7 @@ class SplashController extends GetxController {
       },
       (user) async {
         session.setUser(user);
-        Get.offAllNamed(AppRoute.dashboard);
+        Get.offAllNamed(AppRoute.main);
       },
     );
   }

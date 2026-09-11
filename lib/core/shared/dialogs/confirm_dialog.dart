@@ -23,7 +23,7 @@ class ConfirmDialog {
             child: Text(cancelLabel),
           ),
           TextButton(
-            onPressed: () => Get.back(result: true , closeOverlays: true),
+            onPressed: () => Get.back(result: true ),
             style: TextButton.styleFrom(
               foregroundColor:
                   isDestructive ? AppColors.error : AppColors.primary,

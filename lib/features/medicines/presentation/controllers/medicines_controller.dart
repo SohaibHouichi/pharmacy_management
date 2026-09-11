@@ -123,7 +123,7 @@ class MedicinesController extends GetxController {
 }
 
   Future<void> openDetails(int id) async {
-    await Get.toNamed(AppRoute.medicinesDetails, arguments: id);
+    await Get.toNamed(AppRoute.medicineDetail, arguments: id);
   }
 
   Future<void> openAddForm() async {

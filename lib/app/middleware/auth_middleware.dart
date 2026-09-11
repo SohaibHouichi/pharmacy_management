@@ -21,7 +21,7 @@ class GuestMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     final session = Get.find<SessionService>();
     return session.isLoggedIn
-        ? const RouteSettings(name: AppRoute.dashboard)
+        ? const RouteSettings(name: AppRoute.main)
         : null;
   }
 }

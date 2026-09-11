@@ -42,7 +42,7 @@ abstract class AppGetRoute {
         middlewares: [AuthMiddleware()],
       ),
       GetPage(
-        name: AppRoute.medicinesDetails,
+        name: AppRoute.medicineDetail,
         page: () => const MedicineDetailPage(),
         binding: MedicineDetailBinding(),
         middlewares: [AuthMiddleware()],
