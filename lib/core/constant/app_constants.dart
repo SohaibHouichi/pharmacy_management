@@ -36,7 +36,7 @@ abstract class AppConstants {
   static const String emptySearchMessage = 'No medicines match your search.';
   static const String emptyCategoriesMessage = 'No categories available.';
   static const String emptySalesMessage = 'No sales recorded yet.';
-  static const String emptyAlertsMessage = 'No inventory alerts.';
+  static const String emptyAlertsMessage = 'No inventory found.';
   static const String emptyLowStockMessage =
       'All medicines are sufficiently stocked.';
 
