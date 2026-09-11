@@ -42,6 +42,7 @@ abstract class AppConstants {
 
   // ─── Timing ─────────────────────────────────────────────
   static const Duration searchDebounce = Duration(seconds : 2);
+  
 
   // ─── Pagination (API Guide: `page` / `per_page`, max 50) ─
   static const int defaultPageSize = 15;
